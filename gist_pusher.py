@@ -33,7 +33,7 @@ for report in data:
 
     url = "https://api.github.com/gists"
     headers = {
-        "Authorization": "token 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",
+        "Authorization": "YOUR_TOKEN",
         "Content-Type": "application/json"
     }
     info = {
