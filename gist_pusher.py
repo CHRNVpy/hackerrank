@@ -38,7 +38,7 @@ for report in data:
     }
     info = {
         "accept": "application/vnd.github+json",
-        "description": f"Report {test_id}",
+        "description": f"Report {candidate_test_id}",
         "public": True,
         "files": {
             f"{test_id}-{candidate_test_id}{file_extension}": {
