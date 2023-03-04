@@ -208,4 +208,6 @@ if __name__ == '__main__':
     #get_url_list('Hackerrank Reports', 0) # int 0 is the row of spreadsheet to start
 
     # input lists has 2 options urls - list with links from spreadsheet, and my_list - error_links
+<<<<<<< HEAD
     #main(my_list, login='YOUR_LOGIN', password='YOUR_PASSWORD')
+=======
