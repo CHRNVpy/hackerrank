@@ -201,5 +201,11 @@ def main(url_list, login, password):
 counter += 1
 
 if __name__ == '__main__':
+    """ Firstly you need to run get_urls_list, and wait until links_from_spreadsheet.txt appears, 
+    then comment the func with #
+    Run main func with urls as argument, if there will be error links, run then main func with my_list as argument """
+
+    #get_url_list('Hackerrank Reports', 0) # int 0 is the row of spreadsheet to start
+
     # input lists has 2 options urls - list with links from spreadsheet, and my_list - error_links
-    main(my_list, login='francis@glints.com', password='Mask8645**')
+    #main(my_list, login='YOUR_LOGIN', password='YOUR_PASSWORD')
