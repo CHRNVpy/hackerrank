@@ -202,4 +202,4 @@ counter += 1
 
 if __name__ == '__main__':
     # input lists has 2 options urls - list with links from spreadsheet, and my_list - error_links
-    main(my_list, login='francis@glints.com', password='Mask8645**')
+    main(my_list, login='YOUR_LOGIN', password='YOUR_PASSWORD')
