@@ -48,6 +48,7 @@ def get_url_list(sheet_name: str, start_row: int):
 
     # iterate over values in the first column and exclude the header row
     for row in values[start_row:]:
+
         with open('links_from_spreadsheet.txt', 'a', newline='\n') as spreadsheet:
             spreadsheet.write(row[0] + '\n')
 
@@ -164,15 +165,14 @@ with open('error_urls.txt', 'r') as file:
     for line in lines:
         my_list.append(line)
 
-# open the text file with spreadsheet links
-with open('links_from_spreadsheet.txt') as links:
-    urls = [link.split('\n') for link in links.read().split(',')]
 
-urls = urls[0][:-1]
+def main(login, password):
+    # open the text file with spreadsheet links
+    with open('links_from_spreadsheet.txt') as links:
+        urls = [link.split('\n') for link in links.read().split(',')]
 
-
-def main(url_list, login, password):
-    for url in url_list:  # if errors occurs after scan, change urls to my_list, this will scan error_urls.txt(unscanned urls)
+    urls = urls[0][:-1]
+    for url in urls:  # if errors occurs after scan, change urls to my_list, this will scan error_urls.txt(unscanned urls)
         try:
             res = get_data(url, login=login, password=password)
             with open('test_reports.json', 'a') as report:
@@ -203,10 +203,9 @@ counter += 1
 if __name__ == '__main__':
     """ Firstly you need to run get_urls_list, and wait until links_from_spreadsheet.txt appears, 
     then comment the func with #
-    Run main func with urls as argument, if there will be error links, run then main func with my_list as argument """
+    Run main func """
 
     #get_url_list('Hackerrank Reports', 0) # int 0 is the row of spreadsheet to start
 
-    # input lists has 2 options urls - list with links from spreadsheet, and my_list - error_links
-    #main(my_list, login='YOUR_LOGIN', password='YOUR_PASSWORD')
+    main(login='YOUR_LOGIN', password='YOUR_PASSWORD')
 
