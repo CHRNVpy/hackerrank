@@ -50,7 +50,7 @@ for report in data:
                            f'QUESTION 2:\n'
                            f'Score: {score2}\n'
                            f'Programming Language: {code_language1}\n'
-                           f'{code1}\n'
+                           f'{code2}\n'
             }
         }
     }
