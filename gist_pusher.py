@@ -5,13 +5,14 @@ with open('reports.json', 'r') as file:
     data = json.load(file)
 
 ext = {
-    "Python3": [".py"], "Java8": [".java"], "JavaScript": [".js"], "C": [".c"], "C++": [".cpp"], "C#": [".cs"],
-    "Go": [".go"], "Ruby": [".rb"], "Swift": [".swift"], "Kotlin": [".kt"], "PHP": [".php"], "HTML": [".html"],
-    "CSS": [".css"], "TypeScript": [".ts"], "R": [".r"], "SQL": [".sql"], "Perl": [".pl"], "Scala": [".scala"],
-    "Lua": [".lua"], "MATLAB": [".m"], "Objective-C": [".m"], "Visual Basic": [".vb"], "Haskell": [".hs"],
-    "Shell": [".sh"], "PowerShell": [".ps1"], "Dart": [".dart"], "Assembly": [".asm"], "Rust": [".rs"],
-    "Elixir": [".ex"], "Erlang": [".erl"], "Julia": [".jl"], "Groovy": [".groovy"], "CoffeeScript": [".coffee"],
-    "D": [".d"], "OCaml": [".ml"]
+    "Python3": [".py"], "Java8": [".java"], "java15": [".java"], "Java 7": [".java"], "JavaScript": [".js"],
+    "C": [".c"], "C++": [".cpp"], "C++20": [".cpp"], "C#": [".cs"], "Go": [".go"], "Ruby": [".rb"], "Swift": [".swift"],
+    "Kotlin": [".kt"], "PHP": [".php"], "HTML": [".html"], "CSS": [".css"], "TypeScript": [".ts"],
+    "Typescript": [".ts"], "R": [".r"], "SQL": [".sql"], "Perl": [".pl"], "Scala": [".scala"], "Lua": [".lua"],
+    "MATLAB": [".m"], "Objective-C": [".m"], "Visual Basic": [".vb"], "Haskell": [".hs"], "Shell": [".sh"],
+    "PowerShell": [".ps1"], "Dart": [".dart"], "Assembly": [".asm"], "Rust": [".rs"], "Elixir": [".ex"],
+    "Erlang": [".erl"], "Julia": [".jl"], "Groovy": [".groovy"], "CoffeeScript": [".coffee"], "D": [".d"],
+    "OCaml": [".ml"]
 }
 
 for report in data:
@@ -29,7 +30,6 @@ for report in data:
         file_extension = ext.get(code_language2)[0].strip()
     else:
         file_extension = '.None'
-
 
     url = "https://api.github.com/gists"
     headers = {

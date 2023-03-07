@@ -30,8 +30,6 @@ def wait_for_element_visible(driver, locator, timeout=20):
 
 
 result = {}
-counter = 1
-
 
 # getting all url links from google spreadsheet
 def get_url_list(sheet_name: str, start_row: int):
@@ -53,7 +51,7 @@ def get_url_list(sheet_name: str, start_row: int):
             spreadsheet.write(row[0] + '\n')
 
 
-def get_data(source_url: str, login: str, password: str):
+def get_data(source_url: str, login: str, password: str, counter: int):
     # getting data
     match = re.findall(r'\d+', source_url)
     if match:
@@ -150,6 +148,7 @@ def get_data(source_url: str, login: str, password: str):
     result[f'question_{question_number_list[2]}'] = get_code(question_number_2)
 
     print(f'Report #{counter} for candidate {match[1]} saved to JSON')
+
     return result
 
 
@@ -170,11 +169,11 @@ def main(login, password):
     # open the text file with spreadsheet links
     with open('links_from_spreadsheet.txt') as links:
         urls = [link.split('\n') for link in links.read().split(',')]
-
+    counter = 1
     urls = urls[0][:-1]
     for url in urls:  # if errors occurs after scan, change urls to my_list, this will scan error_urls.txt(unscanned urls)
         try:
-            res = get_data(url, login=login, password=password)
+            res = get_data(url, login=login, password=password, counter=counter)
             with open('test_reports.json', 'a') as report:
                 json.dump(res, report, indent=4)
                 report.write(',\n')
@@ -191,14 +190,13 @@ def main(login, password):
             print(f'Oops, the page is loading too slow or not loading at all')
             continue
         print(error_urls)
+        counter += 1
         time.sleep(10)
 
     with open('error_urls.txt', 'w') as f:
         for url in error_urls:
             f.write(url + '\n')
 
-
-counter += 1
 
 if __name__ == '__main__':
     """ Firstly you need to run get_urls_list, and wait until links_from_spreadsheet.txt appears, 
@@ -207,5 +205,6 @@ if __name__ == '__main__':
 
     #get_url_list('Hackerrank Reports', 0) # int 0 is the row of spreadsheet to start
 
-    main(login='YOUR_LOGIN', password='YOUR_PASSWORD')
+    # input lists has 2 options urls - list with links from spreadsheet, and my_list - error_links
+    main(login='LOGIN', password='PASSWORD')
 
