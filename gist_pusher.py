@@ -1,7 +1,7 @@
 import requests
 import json
 
-with open('reports.json', 'r') as file:
+with open('one_reports.json', 'r') as file:
     data = json.load(file)
 
 ext = {
@@ -33,8 +33,8 @@ for report in data:
 
     url = "https://api.github.com/gists"
     headers = {
-        "Authorization": "YOUR_TOKEN",
-        "Content-Type": "application/json"
+        "Authorization": "Bearer YOUR_TOKEN",
+        "Content-Type": "application/vnd.github+json"
     }
     info = {
         "accept": "application/vnd.github+json",

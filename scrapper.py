@@ -171,12 +171,14 @@ def main(login, password):
         urls = [link.split('\n') for link in links.read().split(',')]
     counter = 1
     urls = urls[0][:-1]
+    reports = []
     for url in urls:  # if errors occurs after scan, change urls to my_list, this will scan error_urls.txt(unscanned urls)
         try:
             res = get_data(url, login=login, password=password, counter=counter)
-            with open('test_reports.json', 'a') as report:
-                json.dump(res, report, indent=4)
-                report.write(',\n')
+            reports.append(res)
+            with open('one_reports.json', 'w') as report:
+                json.dump(reports, report, indent=4)
+                #report.write(',\n')
         except AttributeError:
             error_urls.append(url)
             print(f'Something happened')
